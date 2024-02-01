@@ -42,7 +42,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
               text: 'Local news',
             ),
             Tab(
-              text: 'Tech',
+              text: 'Short News',
             ),
           ]),
           /// -- TabBar View to display its contents
