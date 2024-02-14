@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'news_view/news_view.dart';
+import 'package:get/get.dart';
+import 'package:janatar_barta/features/home/controller/news_controller.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -8,49 +9,38 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
-  late TabController tabController;
+class _HomeViewState extends State<HomeView> {
+  NewsController controller = Get.put(NewsController());
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    tabController = TabController(length: 3, vsync: this);
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    tabController.dispose();
+    controller.getNews();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hello'),
+        title: const Text("Daily News"),
       ),
-      body: Column(
-        children: [
-          /// -- Tab views to display news category
-          TabBar(controller: tabController, tabs: const [
-            Tab(
-              text: 'All news',
-            ),
-            Tab(
-              text: 'Local news',
-            ),
-            Tab(
-              text: 'Short News',
-            ),
-          ]),
-          /// -- TabBar View to display its contents
-          NewsView(tabController: tabController),
-        ],
+      body: FutureBuilder(
+        future: controller.getNews(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+              itemBuilder: (context, index) {
+                return const ListTile();
+              },
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
       ),
     );
   }
 }
-
-

@@ -38,7 +38,7 @@ dependencies:
   http: ^1.2.0
   get: ^4.6.6
   flutter_native_splash: ^2.3.10
-  carousel_slider: ^4.2.1
+  youtube_player_flutter: ^8.1.2
 
 dev_dependencies:
   flutter_test:

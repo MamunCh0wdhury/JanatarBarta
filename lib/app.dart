@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:janatar_barta/navigation_manu.dart';
+import 'package:janatar_barta/features/home/view/home_view.dart';
 import 'package:janatar_barta/utils/theme/theme.dart';
 
 class App extends StatelessWidget {
@@ -14,7 +14,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       darkTheme: TAppTheme.darkTheme,
       theme: TAppTheme.lightTheme,
-      home: const NavigationManu(),
+      home: const HomeView(),
     );
   }
 }
