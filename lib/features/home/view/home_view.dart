@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:janatar_barta/features/home/controller/news_controller.dart';
+import 'package:janatar_barta/features/home/view/news_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -21,6 +22,8 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    MediaQuery.of(context).size.height;
+    MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Daily News"),
@@ -30,8 +33,21 @@ class _HomeViewState extends State<HomeView> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
+              itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                return const ListTile();
+                return ListTile(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NewsView(
+                          title: snapshot.data![index].title.toString(),
+                        ),
+                      ),
+                    );
+                  },
+                  title: Text(snapshot.data![index].title.toString()),
+                );
               },
             );
           } else {

@@ -1,10 +1,10 @@
-/// _id : "65cc6896157fa3b5ec340c70"
-/// title : "নিন্মমানের কাজের খেসারত। "
-/// urlLink : "https://www.youtube.com/watch?v=FhK__nOV2yc"
+/// _id : "65ccfd02d25a47ceea27e23f"
+/// title : "ফের সাত বছরের এক নাবালিকা ধর্ষনের শিকার।"
+/// urlLink : "https://www.youtube.com/watch?v=F0jOe6AWGK4"
 /// __v : 0
 
-class NewsModel {
-  NewsModel({
+class NewsData {
+  NewsData({
       String? id, 
       String? title, 
       String? urlLink, 
@@ -15,7 +15,7 @@ class NewsModel {
     _v = v;
 }
 
-  NewsModel.fromJson(dynamic json) {
+  NewsData.fromJson(dynamic json) {
     _id = json['_id'];
     _title = json['title'];
     _urlLink = json['urlLink'];
@@ -25,11 +25,11 @@ class NewsModel {
   String? _title;
   String? _urlLink;
   num? _v;
-NewsModel copyWith({  String? id,
+NewsData copyWith({  String? id,
   String? title,
   String? urlLink,
   num? v,
-}) => NewsModel(  id: id ?? _id,
+}) => NewsData(  id: id ?? _id,
   title: title ?? _title,
   urlLink: urlLink ?? _urlLink,
   v: v ?? _v,
