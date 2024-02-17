@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:janatar_barta/features/home/controller/news_controller.dart';
+import 'package:janatar_barta/features/home/controller/refresh_controller.dart';
 import 'package:janatar_barta/features/home/view/news_view.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -12,12 +14,12 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   NewsController controller = Get.put(NewsController());
+  RefreshController refreshController = Get.put(RefreshController());
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    controller.getNews();
   }
 
   @override
@@ -28,34 +30,38 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         title: const Text("Daily News"),
       ),
-      body: FutureBuilder(
-        future: controller.getNews(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return ListView.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => NewsView(
-                          title: snapshot.data![index].title.toString(),
+      body: LiquidPullToRefresh(
+        onRefresh: refreshController.handleRefresh,
+        height: 200,
+        child: FutureBuilder(
+          future: controller.getNews(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NewsView(
+                            title: snapshot.data![index].title.toString(),
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                  title: Text(snapshot.data![index].title.toString()),
-                );
-              },
-            );
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
+                      );
+                    },
+                    title: Text(snapshot.data![index].title.toString()),
+                  );
+                },
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ),
       ),
     );
   }
