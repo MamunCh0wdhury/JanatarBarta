@@ -7,7 +7,8 @@ class NewsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    MediaQuery.of(context).size.height;
+    MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(),
       body: Padding(

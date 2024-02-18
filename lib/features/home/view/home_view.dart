@@ -4,6 +4,7 @@ import 'package:janatar_barta/features/home/controller/news_controller.dart';
 import 'package:janatar_barta/features/home/controller/refresh_controller.dart';
 import 'package:janatar_barta/features/home/view/news_view.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import '../../../common/widgets/card/NewsCard.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -40,7 +41,7 @@ class _HomeViewState extends State<HomeView> {
               return ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
+                  return GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
@@ -51,7 +52,7 @@ class _HomeViewState extends State<HomeView> {
                         ),
                       );
                     },
-                    title: Text(snapshot.data![index].title.toString()),
+                    child:  NewsCard(title: snapshot.data![index].title.toString()),
                   );
                 },
               );
@@ -66,3 +67,5 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
+
+
