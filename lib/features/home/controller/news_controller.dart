@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
-import '../model/NewsData.dart';
+import '../model/news_data.dart';
 
 class NewsController extends GetxController {
   List<NewsData> newsList = [];

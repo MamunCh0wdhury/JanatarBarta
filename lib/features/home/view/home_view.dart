@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:janatar_barta/features/home/controller/news_controller.dart';
 import 'package:janatar_barta/features/home/controller/refresh_controller.dart';
 import 'package:janatar_barta/features/home/view/news_view.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-import '../../../common/widgets/card/NewsCard.dart';
+import '../../../common/widgets/card/news_card.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -25,15 +26,15 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    MediaQuery.of(context).size.height;
-    MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Daily News"),
       ),
       body: LiquidPullToRefresh(
         onRefresh: refreshController.handleRefresh,
-        height: 200,
+        showChildOpacityTransition: false,
+        animSpeedFactor: 5,
+        height: 150.h,
         child: FutureBuilder(
           future: controller.getNews(),
           builder: (context, snapshot) {
@@ -48,6 +49,7 @@ class _HomeViewState extends State<HomeView> {
                         MaterialPageRoute(
                           builder: (context) => NewsView(
                             title: snapshot.data![index].title.toString(),
+                            link: snapshot.data![index].urlLink.toString(),
                           ),
                         ),
                       );

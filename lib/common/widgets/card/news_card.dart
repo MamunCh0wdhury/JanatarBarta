@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NewsCard extends StatelessWidget {
   const NewsCard( {
@@ -10,22 +11,24 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MediaQuery.of(context).size.height;
+    MediaQuery.of(context).size.width;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
       ),
-      height: MediaQuery.of(context).size.height * 0.33,
+      height: 260.h,
       width: MediaQuery.of(context).size.width,
       child: Card(
         elevation: 4, // Change as needed
-        margin: const EdgeInsets.symmetric(
-            horizontal: 25, vertical: 10), // Change as needed
+        margin: EdgeInsets.symmetric(
+            horizontal: 25.w, vertical: 10.h), // Change as needed
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(15.r),
                 image: DecorationImage(
                   colorFilter: ColorFilter.mode(
                     Colors.black.withOpacity(0.33),
@@ -36,16 +39,16 @@ class NewsCard extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              height: 150,
-              width: 150,
+              height: 120.h,
+              width: 120.w,
             ),
             Padding(
-              padding:  EdgeInsets.symmetric(
-                  vertical: 16, horizontal: 16),
+              padding:   EdgeInsets.symmetric(
+                  vertical: 16.h, horizontal: 16.w),
               // Change as needed
               child: Text(title,
                   style:
-                  Theme.of(context).textTheme.titleLarge),
+                  Theme.of(context).textTheme.titleSmall),
             ),
           ],
         ),
