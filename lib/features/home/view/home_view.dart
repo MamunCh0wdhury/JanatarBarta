@@ -5,7 +5,7 @@ import 'package:janatar_barta/features/home/controller/news_controller.dart';
 import 'package:janatar_barta/features/home/controller/refresh_controller.dart';
 import 'package:janatar_barta/features/home/view/news_view.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-import '../../../common/widgets/card/news_card.dart';
+import '../../../common/widgets/card/final_card.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -54,7 +54,12 @@ class _HomeViewState extends State<HomeView> {
                         ),
                       );
                     },
-                    child:  NewsCard(title: snapshot.data![index].title.toString()),
+                    child: NewCard(
+                      uploadTime: snapshot.data![index].createdAt.toString(),
+                      title: snapshot.data![index].title.toString(),
+                      thumbnailUrl:
+                          snapshot.data![index].thumbNailUrl.toString(),
+                    ),
                   );
                 },
               );
@@ -69,5 +74,3 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
-
-

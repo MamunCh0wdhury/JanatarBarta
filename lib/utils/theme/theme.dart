@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:janatar_barta/utils/theme/custom_theme/tab_bar_theme.dart';
 import 'custom_theme/appbar_theme.dart';
 import 'custom_theme/text_theme.dart';
 
@@ -15,7 +14,7 @@ class TAppTheme {
       scaffoldBackgroundColor: Colors.white,
       textTheme: TTextTheme.lightTextTheme,
       appBarTheme: TAppBarTheme.lightAppBarTheme,
-      tabBarTheme: TTabBarTheme.lightTabBarTheme);
+    );
 
   /// -- Dark Theme
 
@@ -26,5 +25,5 @@ class TAppTheme {
       scaffoldBackgroundColor: Colors.black,
       textTheme: TTextTheme.darkTextTheme,
       appBarTheme: TAppBarTheme.darkAppBarTheme,
-      tabBarTheme: TTabBarTheme.darkTabBarTheme);
+     );
 }

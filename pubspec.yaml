@@ -41,6 +41,7 @@ dependencies:
   liquid_pull_to_refresh: ^3.0.1
   flutter_screenutil: ^5.9.0
   youtube_player_flutter: ^8.1.2
+  youtube_player_iframe: ^5.1.1
 
 
 dev_dependencies:
