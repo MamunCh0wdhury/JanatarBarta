@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:janatar_barta/common/widgets/card/widget/shimmer.dart';
 import 'package:janatar_barta/features/home/controller/news_controller.dart';
 import 'package:janatar_barta/features/home/controller/refresh_controller.dart';
 import 'package:janatar_barta/features/home/view/news_view.dart';
-import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import '../../../common/widgets/card/final_card.dart';
 
 class HomeView extends StatefulWidget {
@@ -20,7 +19,6 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -30,11 +28,8 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         title: const Text("Daily News"),
       ),
-      body: LiquidPullToRefresh(
+      body: RefreshIndicator(
         onRefresh: refreshController.handleRefresh,
-        showChildOpacityTransition: false,
-        animSpeedFactor: 5,
-        height: 150.h,
         child: FutureBuilder(
           future: controller.getNews(),
           builder: (context, snapshot) {
@@ -64,9 +59,12 @@ class _HomeViewState extends State<HomeView> {
                 },
               );
             } else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return ListView.separated(
+                  itemBuilder: (context, index) => const ShimmerEffect(),
+                  separatorBuilder: (context, index) => const SizedBox(
+                        height: 16.0,
+                      ),
+                  itemCount: 4);
             }
           },
         ),

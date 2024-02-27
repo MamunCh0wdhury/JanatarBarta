@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'widget/news_card.dart';
 
 class NewCard extends StatelessWidget {
@@ -17,11 +16,10 @@ class NewCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200.h,
+      height: MediaQuery.of(context).size.height * 0.29,
       width: MediaQuery.of(context).size.width,
-      child: MyNewsCard(thumbnailUrl: thumbnailUrl, title: title, uploadTime: uploadTime),
+      child: MyNewsCard(
+          thumbnailUrl: thumbnailUrl, title: title, uploadTime: uploadTime),
     );
   }
 }
-
-

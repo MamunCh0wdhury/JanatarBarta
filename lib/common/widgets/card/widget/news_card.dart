@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,11 +30,13 @@ class MyNewsCard extends StatelessWidget {
                   Colors.black.withOpacity(0.33),
                   BlendMode.multiply,
                 ),
-                image: NetworkImage(thumbnailUrl),
+                image: CachedNetworkImageProvider(
+                  thumbnailUrl,
+                ),
                 fit: BoxFit.cover,
               ),
             ),
-            height: 110.h,
+            height: MediaQuery.of(context).size.height * 0.13,
             width: MediaQuery.of(context).size.width * 0.1,
             child: const Stack(
               children: [
@@ -44,7 +47,7 @@ class MyNewsCard extends StatelessWidget {
                     child: Icon(
                       Icons.play_circle_outline,
                       color: Colors.white,
-                      size: 80.0,
+                      size: 50.0,
                     ),
                   ),
                 ),
@@ -59,7 +62,8 @@ class MyNewsCard extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 4.h),
             // Change as needed
-            child: Text("Posted $uploadTime ago", style: Theme.of(context).textTheme.titleSmall),
+            child: Text("Posted $uploadTime ago",
+                style: Theme.of(context).textTheme.titleSmall),
           ),
         ],
       ),
