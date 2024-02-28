@@ -62,7 +62,7 @@ class MyNewsCard extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 4.h),
             // Change as needed
-            child: Text("Posted $uploadTime ago",
+            child: Text("Posted $uploadTime",
                 style: Theme.of(context).textTheme.titleSmall),
           ),
         ],

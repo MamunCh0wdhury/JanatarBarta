@@ -23,6 +23,6 @@ class App extends StatelessWidget {
             home: child,
           );
         },
-        child: const HomeView());
+        child: HomeView());
   }
 }
