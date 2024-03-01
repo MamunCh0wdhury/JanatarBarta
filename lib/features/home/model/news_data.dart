@@ -1,9 +1,10 @@
-/// _id : "65d9da0b25f5412c2e25cb97"
-/// title : "এক সঙ্গে ফাঁসিতে আত্মহত্যা একই ঘরে স্বামী স্ত্রীর।"
-/// urlLink : "https://www.youtube.com/watch?v=BRGBroXDfKw"
-/// thumbNailUrl : "https://img.youtube.com/vi/BRGBroXDfKw/0.jpg"
-/// createdAt : "2024-02-24T11:59:07.951Z"
-/// updatedAt : "2024-02-24T11:59:07.951Z"
+/// _id : "65e17c15729ecd7a893aa473"
+/// title : "থানা থেকে উধাও গাঁজা ।"
+/// urlLink : "https://www.youtube.com/watch?v=iHaSq_WHP5s"
+/// thumbNailUrl : "https://img.youtube.com/vi/iHaSq_WHP5s/0.jpg"
+/// timestamps : "2024-03-01T06:56:21.622Z"
+/// createdAt : "2024-03-01T06:56:21.623Z"
+/// updatedAt : "2024-03-01T06:56:21.623Z"
 /// __v : 0
 
 class NewsData {
@@ -12,6 +13,7 @@ class NewsData {
       String? title, 
       String? urlLink, 
       String? thumbNailUrl, 
+      String? timestamps, 
       String? createdAt, 
       String? updatedAt, 
       num? v,}){
@@ -19,6 +21,7 @@ class NewsData {
     _title = title;
     _urlLink = urlLink;
     _thumbNailUrl = thumbNailUrl;
+    _timestamps = timestamps;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
     _v = v;
@@ -29,6 +32,7 @@ class NewsData {
     _title = json['title'];
     _urlLink = json['urlLink'];
     _thumbNailUrl = json['thumbNailUrl'];
+    _timestamps = json['timestamps'];
     _createdAt = json['createdAt'];
     _updatedAt = json['updatedAt'];
     _v = json['__v'];
@@ -37,6 +41,7 @@ class NewsData {
   String? _title;
   String? _urlLink;
   String? _thumbNailUrl;
+  String? _timestamps;
   String? _createdAt;
   String? _updatedAt;
   num? _v;
@@ -44,6 +49,7 @@ NewsData copyWith({  String? id,
   String? title,
   String? urlLink,
   String? thumbNailUrl,
+  String? timestamps,
   String? createdAt,
   String? updatedAt,
   num? v,
@@ -51,6 +57,7 @@ NewsData copyWith({  String? id,
   title: title ?? _title,
   urlLink: urlLink ?? _urlLink,
   thumbNailUrl: thumbNailUrl ?? _thumbNailUrl,
+  timestamps: timestamps ?? _timestamps,
   createdAt: createdAt ?? _createdAt,
   updatedAt: updatedAt ?? _updatedAt,
   v: v ?? _v,
@@ -59,6 +66,7 @@ NewsData copyWith({  String? id,
   String? get title => _title;
   String? get urlLink => _urlLink;
   String? get thumbNailUrl => _thumbNailUrl;
+  String? get timestamps => _timestamps;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
   num? get v => _v;
@@ -69,6 +77,7 @@ NewsData copyWith({  String? id,
     map['title'] = _title;
     map['urlLink'] = _urlLink;
     map['thumbNailUrl'] = _thumbNailUrl;
+    map['timestamps'] = _timestamps;
     map['createdAt'] = _createdAt;
     map['updatedAt'] = _updatedAt;
     map['__v'] = _v;

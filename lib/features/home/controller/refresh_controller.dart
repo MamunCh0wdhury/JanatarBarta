@@ -5,8 +5,7 @@ class RefreshController extends GetxController {
   NewsController controller = Get.put(NewsController());
   Future<void> handleRefresh() async {
     await Future.delayed(
-      const Duration(seconds: 3),
-      () => controller.getNews(),
+      const Duration(seconds: 5),
     );
   }
 }
