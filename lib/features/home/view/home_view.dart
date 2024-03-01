@@ -28,7 +28,7 @@ class _HomeViewState extends State<HomeView> {
         title: const Text("Daily News"),
       ),
       body: RefreshIndicator(
-        onRefresh: refreshController.handleRefresh,
+        onRefresh: controller.getNews,
         child: FutureBuilder(
           future: controller.getNews(),
           builder: (context, snapshot) {
