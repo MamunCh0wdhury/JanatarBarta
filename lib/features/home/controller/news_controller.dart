@@ -7,7 +7,8 @@ class NewsController extends GetxController {
   List<NewsData> newsList = [];
 
   Future<List<NewsData>> getNews() async {
-    final response = await get(Uri.parse("https://janatarbarta.onrender.com/news"));
+    final response =
+        await get(Uri.parse("https://janatarbarta.onrender.com/news"));
     var data = jsonDecode(response.body.toString());
     newsList.clear();
     if (response.statusCode == 200) {

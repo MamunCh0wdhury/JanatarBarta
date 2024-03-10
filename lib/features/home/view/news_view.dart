@@ -16,31 +16,43 @@ class _NewsViewState extends State<NewsView> {
   @override
   Widget build(BuildContext context) {
     String? id = YoutubePlayer.convertUrlToId(widget.link);
-    return YoutubePlayerBuilder(player: YoutubePlayer(
-      controlsTimeOut: const Duration(seconds: 5),
-      showVideoProgressIndicator: true,
-      controller: YoutubePlayerController(
-        initialVideoId: id.toString(),
-        flags: const YoutubePlayerFlags(
-          hideThumbnail: true,
-          hideControls: false,
-          forceHD: true,
-          useHybridComposition: true,
-          autoPlay: true,
-          mute: false,
+    return YoutubePlayerBuilder(
+        player: YoutubePlayer(
+          controlsTimeOut: const Duration(seconds: 5),
+          showVideoProgressIndicator: true,
+          controller: YoutubePlayerController(
+            initialVideoId: id.toString(),
+            flags: const YoutubePlayerFlags(
+              hideThumbnail: true,
+              hideControls: false,
+              forceHD: true,
+              useHybridComposition: true,
+              autoPlay: true,
+              mute: false,
+              showLiveFullscreenButton: true,
+            ),
+          ),
+          progressIndicatorColor: MColor.defaultColor,
+          progressColors: const ProgressBarColors(
+              bufferedColor: MColor.defaultColor,
+              handleColor: MColor.defaultColor,
+              playedColor: MColor.defaultColor),
         ),
-      ),
-      progressIndicatorColor: MColor.defaultColor,
-      progressColors: const ProgressBarColors(
-          bufferedColor: MColor.defaultColor,
-          handleColor: MColor.defaultColor,
-          playedColor: MColor.defaultColor),
-    ), builder:(context,player){
-      return Scaffold(
-        appBar: AppBar(title: Text(widget.title),),
-        body: player,
-      );
-    } );
-
+        builder: (context, player) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(widget.title),
+            ),
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                player,
+                const SizedBox(
+                  height: 10.0,
+                ),
+              ],
+            ),
+          );
+        });
   }
 }

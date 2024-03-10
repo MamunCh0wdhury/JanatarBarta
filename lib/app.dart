@@ -14,6 +14,7 @@ class App extends StatelessWidget {
         designSize: const Size(360, 690),
         minTextAdapt: true,
         splitScreenMode: true,
+        ensureScreenSize: true,
         builder: (context, child) {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
@@ -23,6 +24,6 @@ class App extends StatelessWidget {
             home: child,
           );
         },
-        child: HomeView());
+        child: const HomeView());
   }
 }
